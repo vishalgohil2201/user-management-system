@@ -1,27 +1,63 @@
-# CrudOperation
+# User Management System (Angular 14)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
 
-## Development server
+## Introduction
+This is a **User Management System** built using **Angular 14** and **Angular Material**. The system provides features like user listing, sorting, pagination, search, role management, and CRUD operations with confirmation dialogs. It is designed to be **responsive**, **well-structured**, and **documented**.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
+- User listing with sorting and pagination
+- Add, edit, and delete users with confirmation dialogs
+- Search functionality
+- Role management
+- Angular Material UI for styling and components
+- Responsive design
 
-## Code scaffolding
+## Technologies Used
+- **Angular 14**
+- **Angular Material**
+- **TypeScript**
+- **SCSS/CSS**
+- **Bootstrap (if needed)**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation
 
-## Build
+### Prerequisites
+Make sure you have the following installed:
+- [Node.js](https://nodejs.org/) (v14+ recommended)
+- [Angular CLI](https://angular.io/cli)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Steps to Install
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-repo/user-management.git
+   cd user-management
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Start the development server:
+   ```sh
+   ng serve
+   ```
+4. Open `http://localhost:4200/` in your browser.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Usage
+- To **add a user**, click the **Add User** button, fill in the details, and submit.
+- To **edit a user**, click the **Edit** button next to a user, modify the details, and save.
+- To **delete a user**, click the **Delete** button and confirm.
+- Use the **search bar** to filter users by name or email.
+- Change **roles** in the Role Management section.
 
-## Running end-to-end tests
+## Commands
+| Command | Description |
+|---------|-------------|
+| `ng serve` | Run the development server at `http://localhost:4200/` |
+| `ng build` | Build the project for production |
+| `ng test` | Run unit tests |
+| `ng lint` | Lint the code |
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## License
+This project is licensed under the **MIT License**.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
