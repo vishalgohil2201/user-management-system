@@ -1,0 +1,78 @@
+<div class="home-section">
+  <div class="container">
+    <div class="col-12 mx-auto">
+      <div class="row align-items-center my-3">
+        <div class="col-12 col-md-9">
+          <input type="text" placeholder="Search Here" class="form-control" [(ngModel)]="searchText">
+        </div>
+        <div class="col-12 col-md-3 text-md-end mt-2 mt-md-0">
+          <button class="btn btn-primary d-flex align-items-center justify-content-center w-100 w-md-auto"
+            [routerLink]="'new'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px" fill="white" viewBox="0 0 512 512">
+              <path
+                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+            </svg>
+            <span class="ms-2">Add User</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col" (click)="sortData('name')" style="cursor: pointer;">
+                Name
+                <span
+                  [innerHTML]="sortColumn === 'name' ? (sortDirection === 'asc' ? upArrowSvg : downArrowSvg) : upArrowSvg"></span>
+              </th>
+
+              <th scope="col" (click)="sortData('email')" style="cursor: pointer;">
+                Email
+                <span
+                  [innerHTML]="sortColumn === 'email' ? (sortDirection === 'asc' ? upArrowSvg : downArrowSvg) : upArrowSvg"></span>
+              </th>
+
+              <th scope="col">Role</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let user of (sortedUsers | globalSearch:searchText) | paginate: { itemsPerPage: pageSize, currentPage: currentPage }; let i = index">
+              <th scope="row">{{ i + 1 + (currentPage - 1) * pageSize }}</th>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.role }}</td>
+              <td>
+                <div class="d-flex">
+                  <button class="btn btn-danger me-1" (click)="_stoargeService.deleteUser(user.id, user.name)" title="Delete">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="15px" fill="white">
+                      <path
+                        d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z" />
+                    </svg>
+                  </button>
+                  <button class="btn btn-warning" [routerLink]="[user.id]" title="Edit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="20px" viewBox="0 0 24 24" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12 21C12 20.4477 12.4477 20 13 20H21C21.5523 20 22 20.4477 22 21C22 21.5523 21.5523 22 21 22H13C12.4477 22 12 21.5523 12 21Z"
+                        fill="#323232" />
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M20.7736 8.09994C22.3834 6.48381 22.315 4.36152 21.113 3.06183C20.5268 2.4281 19.6926 2.0233 18.7477 2.00098C17.7993 1.97858 16.8167 2.34127 15.91 3.09985C15.8868 3.11925 15.8645 3.13969 15.8432 3.16111L2.87446 16.1816C2.31443 16.7438 2 17.5051 2 18.2987V19.9922C2 21.0937 2.89197 22 4.00383 22H5.68265C6.48037 22 7.24524 21.6823 7.80819 21.1171L20.7736 8.09994Z"
+                        fill="#323232" />
+                    </svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="d-flex justify-content-center mt-4">
+        <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
